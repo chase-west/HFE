@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Story - Image Carousel</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* Apply Inter font globally */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        /* Custom styles for carousel controls - Overriding Bootstrap defaults */
+        .carousel-control-prev,
+        .carousel-control-next {
+            width: 3rem; /* 48px */
+            height: 3rem; /* 48px */
+            border-radius: 9999px; /* Full circle */
+            background-color: #10B981 !important; /* Emerald-500 green - Use !important to override Bootstrap */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.75 !important; /* Override Bootstrap opacity */
+            transition: opacity 0.15s ease-in-out;
+            /* Position is handled by Bootstrap, but ensure z-index */
+            z-index: 10;
+             /* Remove default Bootstrap background image */
+            background-image: none !important;
+        }
+
+        .carousel-control-prev:hover,
+        .carousel-control-next:hover {
+            opacity: 1 !important; /* Override Bootstrap opacity */
+            background-color: #059669 !important; /* Darker green on hover */
+        }
+
+        /* Override Bootstrap's positioning slightly if needed */
+        .carousel-control-prev {
+            left: 1rem;
+        }
+
+        .carousel-control-next {
+            right: 1rem;
+        }
+
+        /* Style the SVG icons within the controls */
+        .carousel-control-prev-icon,
+        .carousel-control-next-icon {
+             /* Remove Bootstrap's background image */
+            background-image: none !important;
+            width: 1.5rem; /* 24px */
+            height: 1.5rem; /* 24px */
+            color: white;
+            /* Ensure SVG is displayed */
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Custom styles for carousel indicators - Overriding Bootstrap defaults */
+        .carousel-indicators li {
+            background-color: #6B7280 !important; /* Gray-500 - Use !important */
+            opacity: 0.5;
+            width: 0.75rem !important; /* 12px */
+            height: 0.75rem !important; /* 12px */
+            border-radius: 9999px !important; /* Full circle */
+            margin-left: 0.5rem !important; /* Spacing */
+            margin-right: 0.5rem !important; /* Spacing */
+            cursor: pointer;
+            transition: opacity 0.6s ease;
+             /* Remove Bootstrap borders */
+            border: none !important;
+        }
+
+        .carousel-indicators .active {
+            opacity: 1;
+            background-color: #10B981 !important; /* Emerald-500 green - Use !important */
+        }
+
+        /* Ensure images fit well within Bootstrap items */
+        .carousel-item img {
+            object-fit: contain; /* Maintain aspect ratio, fit within container */
+            height: 80vh; /* Limit image height */
+            width: 100%;
+            margin: auto; /* Center image if smaller than container */
+            display: block;
+        }
+
+        /* Adjust height for smaller screens */
+        @media (max-width: 768px) {
+            .carousel-item img {
+                height: 60vh;
+            }
+            .carousel-control-prev,
+            .carousel-control-next {
+                width: 2.5rem; /* Smaller controls */
+                height: 2.5rem;
+            }
+            .carousel-control-prev-icon,
+            .carousel-control-next-icon {
+                width: 1.25rem;
+                height: 1.25rem;
+            }
+             .carousel-control-prev {
+                left: 0.5rem;
+            }
+            .carousel-control-next {
+                right: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body class="bg-black text-white flex items-center justify-center min-h-screen p-4">
+
+    <div id="bannerCarousel" class="carousel slide relative w-full max-w-4xl mx-auto shadow-lg" data-ride="carousel">
+        <ol class="carousel-indicators absolute bottom-0 left-0 right-0 flex justify-center p-0 mb-4 list-none z-10">
+            <li data-target="#bannerCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#bannerCarousel" data-slide-to="1"></li>
+            <li data-target="#bannerCarousel" data-slide-to="2"></li>
+            <li data-target="#bannerCarousel" data-slide-to="3"></li>
+            <li data-target="#bannerCarousel" data-slide-to="4"></li>
+            <li data-target="#bannerCarousel" data-slide-to="5"></li>
+            <li data-target="#bannerCarousel" data-slide-to="6"></li>
+            <li data-target="#bannerCarousel" data-slide-to="7"></li>
+        </ol>
+
+        <div class="carousel-inner relative overflow-hidden rounded-lg">
+            <div class="carousel-item active">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-21.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="First Slide - Regeneration World Magazine Fall 2024 Page 21">
+            </div>
+            <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-22.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Second Slide - Regeneration World Magazine Fall 2024 Page 22">
+            </div>
+            <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-23.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Third Slide - Regeneration World Magazine Fall 2024 Page 23">
+            </div>
+            <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-24.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Fourth Slide - Regeneration World Magazine Fall 2024 Page 24">
+            </div>
+            <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-25.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Fifth Slide - Regeneration World Magazine Fall 2024 Page 25">
+            </div>
+            <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-26.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Sixth Slide - Regeneration World Magazine Fall 2024 Page 26">
+            </div>
+            <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/12/Regeneration-World-Magazine-Fall-2024-27.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Seventh Slide - Regeneration World Magazine Fall 2024 Page 27">
+            </div>
+             <div class="carousel-item">
+                <img src="https://green2gold.org/wp-content/uploads/2024/11/RegenGlobal_LibraryDeck-14.png"
+                     class="d-block w-100" onerror="this.onerror=null;this.src='https://placehold.co/1200x800/0a0a0a/ffffff?text=Image+Not+Found';"
+                     alt="Eighth Slide - RegenGlobal Library Deck Page 14">
+            </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#bannerCarousel" role="button" data-slide="prev">
+            <svg class="carousel-control-prev-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+            </svg>
+            <span class="sr-only">Previous</span> </a>
+        <a class="carousel-control-next" href="#bannerCarousel" role="button" data-slide="next">
+            <svg class="carousel-control-next-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+            </svg>
+            <span class="sr-only">Next</span> </a>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script>
+        // Optional: Initialize the carousel explicitly if needed
+        // $(document).ready(function(){
+        //   $('#bannerCarousel').carousel();
+        // });
+
+        // Ensure SVGs are properly displayed within Bootstrap controls
+        // (This might not be strictly necessary with the CSS overrides, but good practice)
+        $(document).ready(function(){
+            $('.carousel-control-prev-icon, .carousel-control-next-icon').each(function(){
+                // Ensure the SVG element is directly used, replacing Bootstrap's default span content if any
+                var svg = $(this).find('svg');
+                if (svg.length > 0) {
+                    $(this).empty().append(svg); // Clear existing content and append SVG
+                }
+            });
+        });
+    </script>
+</body>
+</html>
